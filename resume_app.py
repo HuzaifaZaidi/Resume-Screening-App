@@ -94,29 +94,34 @@ def main():
     st.markdown(
     """
     <style>
+        .title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .tooltip {
             position: relative;
             display: inline-block;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px; /* Reduced size */
             color: white;
             background-color: #007bff;
-            padding: 8px 15px;
+            padding: 5px 10px; /* Reduced padding */
             border-radius: 5px;
+            text-align: center;
         }
         .tooltip .tooltiptext {
             visibility: hidden;
             width: 300px;
             background-color: black;
             color: #fff;
-            text-align: center;
+            text-align: left;
             border-radius: 5px;
             padding: 10px;
             position: absolute;
             z-index: 1;
             top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 0;
             opacity: 0;
             transition: opacity 0.3s;
         }
@@ -125,8 +130,10 @@ def main():
             opacity: 1;
         }
     </style>
-    
-    <div class="tooltip">View Supported Categories
+
+    <div class="title-container">
+        <h1>Resume Category Prediction App</h1>
+        <div class="tooltip">ℹ️ Categories
         <div class="tooltiptext"> This model was trained on resumes from:
             Java Developer, Testing, DevOps Engineer, Python Developer, Web Designing, HR, 
             Hadoop, Blockchain, ETL Developer, Operations Manager, Data Science, Sales, 
