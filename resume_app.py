@@ -90,6 +90,54 @@ def predict_category(input_resume):
 def main():
     st.set_page_config(page_title="Resume Category Prediction", page_icon="📄", layout="wide")
     st.title("Resume Category Prediction App")
+    # CSS for hover effect
+    st.markdown(
+    """
+    <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+    
+    <div class="tooltip">View Supported Categories
+        <div class="tooltiptext">
+            Java Developer, Testing, DevOps Engineer, Python Developer, Web Designing, HR, 
+            Hadoop, Blockchain, ETL Developer, Operations Manager, Data Science, Sales, 
+            Mechanical Engineer, Arts, Database, Electrical Engineering, Health and Fitness, 
+            PMO, Business Analyst, DotNet Developer, Automation Testing, Network Security Engineer, 
+            SAP Developer, Civil Engineer, Advocate
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
     st.markdown("Upload a resume (PDF, TXT, DOCX) or paste text manually to get the predicted job category.")
     
     option = st.radio("Choose Input Method:", ["Upload a File", "Paste Text"], index=0)
