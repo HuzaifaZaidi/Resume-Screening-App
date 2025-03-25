@@ -181,7 +181,7 @@ def main():
         <style>
             .footer {
                 position: fixed;
-                bottom: 10px;
+                bottom: 11px;
                 center: 0px;
                 font-size: 14px;
                 color: gray;
