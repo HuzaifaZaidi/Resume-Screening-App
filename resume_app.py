@@ -90,29 +90,37 @@ def predict_category(input_resume):
 def main():
     st.set_page_config(page_title="Resume Category Prediction", page_icon="📄", layout="wide")
     st.title("Resume Category Prediction App")
-    st.markdown("Upload a resume (PDF, TXT, DOCX) and get the predicted job category.")
-
-    uploaded_file = st.file_uploader("Upload a Resume", type=["pdf", "docx", "txt"])
-
-    if uploaded_file:
-        try:
-            ext = uploaded_file.name.split('.')[-1].lower()
-            resume_text = (
-                extract_text_from_pdf(uploaded_file) if ext == 'pdf' else
-                extract_text_from_docx(uploaded_file) if ext == 'docx' else
-                extract_text_from_txt(uploaded_file)
-            )
-
-            st.success("Text extraction successful!")
-
-            if st.checkbox("Show extracted text"):
-                st.text_area("Extracted Resume Text", resume_text, height=300)
-
-            st.subheader("Predicted Category")
-            st.write(f"**{predict_category(resume_text)}**")
-
-        except Exception as e:
-            st.error(f"Error processing the file: {str(e)}")
+    st.markdown("Upload a resume (PDF, TXT, DOCX) or paste text manually to get the predicted job category.")
+    
+    option = st.radio("Choose Input Method:", ["Upload a File", "Paste Text"], index=0)
+    
+    resume_text = ""
+    
+    if option == "Upload a File":
+        uploaded_file = st.file_uploader("Upload a Resume", type=["pdf", "docx", "txt"])
+        
+        if uploaded_file:
+            try:
+                ext = uploaded_file.name.split('.')[-1].lower()
+                resume_text = (
+                    extract_text_from_pdf(uploaded_file) if ext == 'pdf' else
+                    extract_text_from_docx(uploaded_file) if ext == 'docx' else
+                    extract_text_from_txt(uploaded_file)
+                )
+                st.success("Text extraction successful!")
+            except Exception as e:
+                st.error(f"Error processing the file: {str(e)}")
+    
+    elif option == "Paste Text":
+        resume_text = st.text_area("Paste Resume Text Here", height=300)
+    
+    if resume_text:
+        if st.checkbox("Show extracted text"):
+            st.text_area("Extracted Resume Text", resume_text, height=300)
+        
+        st.subheader("Predicted Category")
+        st.write(f"**{predict_category(resume_text)}**")
+    
     st.markdown(
         """
         <style>
