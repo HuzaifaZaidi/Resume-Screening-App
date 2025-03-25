@@ -119,7 +119,7 @@ def main():
             .footer {
                 position: fixed;
                 bottom: 10px;
-                right: 20px;
+                center: 0px;
                 font-size: 14px;
                 color: gray;
             }
