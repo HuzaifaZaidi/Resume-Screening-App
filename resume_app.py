@@ -89,7 +89,7 @@ def predict_category(input_resume):
 # Streamlit app layout
 def main():
     st.set_page_config(page_title="Resume Category Prediction", page_icon="📄", layout="wide")
-    st.title("Resume Category Prediction App")
+    # st.title("Resume Category Prediction App")
     # CSS for hover effect
     st.markdown(
     """
