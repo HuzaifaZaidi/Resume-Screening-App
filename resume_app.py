@@ -127,7 +127,7 @@ def main():
     </style>
     
     <div class="tooltip">View Supported Categories
-        <div class="tooltiptext">
+        <div class="tooltiptext"> This model was trained on resumes from:
             Java Developer, Testing, DevOps Engineer, Python Developer, Web Designing, HR, 
             Hadoop, Blockchain, ETL Developer, Operations Manager, Data Science, Sales, 
             Mechanical Engineer, Arts, Database, Electrical Engineering, Health and Fitness, 
